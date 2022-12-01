@@ -59,27 +59,16 @@ function crearHTML(){
         
         //Si no encuentra el texto ingresado por teclado retorna -1
         if(nombre.indexOf(texto) != -1){
-            const div = document.createElement("div");
-            div.innerHTML = `
-            <img src='${pi.imagen}'> 
-            <h2>${pi.nombre}</h2> 
-            <h3>INGREDIENTES:<br>${pi.ingredientes}</h3> 
-            <div class='buy'>
-                <h2>$${pi.precio}</h2>
-                <a><i class="fa-solid fa-cart-arrow-down"></i></a>
-            </div>`
-            //Le asignamos una clase de CSS con los estilos
-            div.classList.add("card");
-            cards_container.appendChild(div);
+            createCard(pi);
 
             //Si la tarea ya existe en el array que no la guarde.
             /* if(pitza.some((item) => texto === item.nombre)){
-                showError("La tarea ya existe");
+                showError("La pizza ya existe");
                 return;
             } */
 
             pitza = [...pitza, pi];
-            console.log(pitza);
+            // console.log(pitza);
         }
     }
     if(cards_container.innerHTML === ""){
@@ -107,13 +96,40 @@ function sendLocalStorage(){
     localStorage.setItem("pizzas", JSON.stringify(pitza));
 }
 
+pitza = JSON.parse(localStorage.getItem("pizzas")) || [];
+
+console.log(pitza);
+
 function recuperarLocalStorage(){
     document.addEventListener("DOMContentLoaded", ()=>{
         //Parseamos para convertir el string a un objeto, para poder utilizar el foreach en la funcion de createHTML()
-        pitza = JSON.parse(localStorage.getItem("pizzas"));
-        console.log(pitza);
+        pitza = JSON.parse(localStorage.getItem("pizzas")) || [];
         //crearHTML();
+        if(pitza != []){
+            pitza.forEach(pi => {
+                createCard(pi);
+                // pitza = [...pitza, pi];
+            });
+            
+        }
+        pitza = [];
+        sendLocalStorage();
     });
     //Guardar el array en el local storage
-    sendLocalStorage();
+    // sendLocalStorage();
+}
+
+function createCard(pi){
+    const div = document.createElement("div");
+    div.innerHTML = `
+    <img src='${pi.imagen}'> 
+    <h2>${pi.nombre}</h2> 
+    <h3>INGREDIENTES:<br>${pi.ingredientes}</h3> 
+    <div class='buy'>
+        <h2>$${pi.precio}</h2>
+        <a><i class="fa-solid fa-cart-arrow-down"></i></a>
+    </div>`
+    //Le asignamos una clase de CSS con los estilos
+    div.classList.add("card");
+    cards_container.appendChild(div);
 }
