@@ -97,7 +97,6 @@ function sendLocalStorage(){
 }
 
 pitza = JSON.parse(localStorage.getItem("pizzas")) || [];
-
 console.log(pitza);
 
 function recuperarLocalStorage(){

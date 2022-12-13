@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap");
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: 1px solid red; */
+}
+
+:root {
+    --dark-cyan: hsl(185, 75%, 39%);
+}
+
+body {
+    background: #252525;
+    font-family: "Poppins", sans-serif;
+    background-color: var(--dark-cyan);
+    background-image: url(../img/bg-pattern-top.svg), url(../img/bg-pattern-bottom.svg);
+    background-repeat: no-repeat, no-repeat;
+    background-position: right 50vw bottom 50vh, left 50vw top 50vh;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+}
+
+.logo{
+    width: 25%;
+    margin: auto;
+}  
+
+main form{
+    display: flex;
+    gap: 1em;
+}
+
+main button{
+    width: 2em;
+    height: 2em;
+    align-self: center;
+    background-color: transparent;
+    border: none;
+}
+
+form{
+    width: 250px;
+    margin: 20px auto;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+}
+
+.poke-card {
+    position: relative;
+    height: fit-content;
+    font-family: 'Roboto Mono', monospace;
+    max-width: 400px;
+    border-radius: 25px;
+    color: #000;
+    text-align: center;
+    padding: 10px;
+    margin: 0 auto;
+    /* background-color: #FFF; */
+    border: 1px solid black;
+    background: url(../img/bg-pattern-card.svg);
+}
+
+.pokedex{
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.poke-card::before {
+    content: '';
+    background-size: 3px 3px;
+    border-radius: 4px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: -1;
+}
+
+.img-container {
+    position: relative;
+    width: 250px;
+    margin: 20px auto;
+}
+
+.poke-stats div {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.poke-types div {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
+    border: 1px dashed black;
+    font-weight: 600;
+}
+
+.poke-img {
+    width: 200px;
+    border-radius: 10%;
+}
+
+.data-container{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 0;;
+}
+
+.poke-id{
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.poke-weight{
+    font-weight: 600;
+}
+
+.poke-height{
+    font-weight: 600;
+}
+
+
+
